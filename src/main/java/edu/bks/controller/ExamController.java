@@ -2,13 +2,8 @@ package edu.bks.controller;
 
 import edu.bks.dto.Exam;
 import edu.bks.service.ExamService;
-import edu.bks.service.impl.ExamServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/exam")
@@ -20,5 +15,10 @@ public class ExamController {
     @PostMapping("/create-exam")
     public void createExam(@RequestBody Exam exam){
         service.createExam(exam);
+    }
+
+    @GetMapping("/get-exam-by-course-id/{id}")
+    public void getExamByCourseId(@PathVariable Integer id){
+        service.getExamByCourseId(id);
     }
 }
